@@ -15,6 +15,8 @@ def button_function():
 label = customtkinter.CTkLabel(master=app, text="Account")
 textbox = customtkinter.CTkTextbox(app)
 
+textbox2= customtkinter.CTKTextbox(app)
+
 # textbox.place(in_=app, relx=0.2, rely=0.1,anchor=tkinter.N)
 label.place(in_=app, relx=0.4,rely=0.4,anchor=tkinter.CENTER)
 
