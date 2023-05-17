@@ -5,27 +5,26 @@ customtkinter.set_appearance_mode("System")  # Modes: system (default), light, d
 customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
 app = customtkinter.CTk()  # create CTk window like you do with the Tk window
-app.geometry("500x400")
-app._min_height(400)
-app._min_width(500)
+app.geometry("500x600")
 
 def button_function():
-    print("button pressed")
+    print("Hello there: "+acc_input.get())
 
-label = customtkinter.CTkLabel(master=app, text="Account")
-textbox = customtkinter.CTkTextbox(app)
+# acc_label = customtkinter.CTkLabel(master=app, text="Account")
 
-textbox2= customtkinter.CTKTextbox(app)
+acc_input = customtkinter.CTkEntry(app, placeholder_text="account")
+acc_input.place(in_ = app, relx = 0.3, rely = 0.3, anchor = tkinter.N)
+pwd_input = customtkinter.CTkEntry(app, placeholder_text = "password")
+pwd_input.place(in_=app, relx=0.2, rely=0.2, anchor = tkinter.N)
 
 # textbox.place(in_=app, relx=0.2, rely=0.1,anchor=tkinter.N)
-label.place(in_=app, relx=0.4,rely=0.4,anchor=tkinter.CENTER)
+# acc_label.place(in_=app, relx=0.4,rely=0.4,anchor=tkinter.CENTER)
 
 # Use CTkButton instead of tkinter Button
-button = customtkinter.CTkButton(master=app, text="CTkButton", command=button_function)
+button = customtkinter.CTkButton(master = app, text = "CTkButton", command = button_function())
 button.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 
+# app._deactivate_windows_window_header_manipulation = True
 
-
-
-
+app.resizable(False,False)
 app.mainloop()
