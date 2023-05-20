@@ -1,3 +1,4 @@
+
 import tkinter
 from typing import Optional, Tuple, Union
 import customtkinter
@@ -5,25 +6,39 @@ import customtkinter
 customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
 customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
-def button_disconnect_vpn():
-    print("you disconnected the vpn")
+credentials = {
+    "acc":"",
+    "pw":""
+}
+
+def check_creds():
     login.iconify()
     vpn_status.withdraw()
-    
+
+def button_disconnect_vpn():
+    print("terminating connection...")
+
 vpn_status = customtkinter.CTk()
 vpn_status.geometry("500x250")
 vpn_status.title("VPN")
 vpn_status.resizable(False,False)
 
 disconnect_btn = customtkinter.CTkButton(vpn_status,text = "Disconnect",command = button_disconnect_vpn)
-disconnect_btn.place( relx = 0.5, rely = 0.5)
+disconnect_btn.place(relx = 0.5, rely = 0.5)
+creds_btn = customtkinter.CTkButton( vpn_status, text = "Settings", command = check_creds )
 
-login = customtkinter.CTk()  # create CTk window like you do with the Tk window
+
+# ------------------------------------------------------------------
+login = customtkinter.CTk() 
 login.geometry("300x300")
 login.title("VPN")
+login.withdraw()
 
-def connect_button():
-    print("You connected " + acc_input.get())
+def save_creds():
+    # print("You connected " + acc_input.get())
+    credentials.__setitem__("acc", acc_input.get())
+    credentials.__setitem__("pw", pwd_input.get())
+
     login.withdraw()
     vpn_status.iconify()
 
@@ -36,10 +51,10 @@ pwd_input.place(in_=login, relx=0.25, rely=0.4)
 
 
 # Use CTkButton instead of tkinter Button
-button = customtkinter.CTkButton(master = login, text = "Connect", command =connect_button)
+button = customtkinter.CTkButton(master = login, text = "Connect", command =save_creds)
 button.place(relx=0.25, rely=0.6)
 
 # login._deactivate_windows_window_header_manipulation = True
 
 login.resizable(False,False)
-login.mainloop()
+vpn_status.mainloop()
