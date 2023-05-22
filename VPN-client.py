@@ -5,6 +5,16 @@ import customtkinter
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue")
 
+class Main(customtkinter.CTk):
+     def __init__(self, master):
+        super().__init__(master)
+ 
+
+class Settings(customtkinter.CTk):
+    def __init__(self, master):
+        super().__init__(master)
+
+
 def get_conn_status():
     status : bool = True
     return status
@@ -28,12 +38,10 @@ vpn_status.geometry("500x250")
 vpn_status.title("VPN")
 vpn_status.resizable(False,False)
 
-if(connection_status == True):
-    pass
 
 
 disconnect_btn = customtkinter.CTkButton(vpn_status, 
-                                         text = "Disconnect", 
+                                         text = "Disconnect",  
                                          command = button_disconnect_vpn)
 
 disconnect_btn.place(relx = 0.65, rely = 0.8)
@@ -44,7 +52,7 @@ creds_btn = customtkinter.CTkButton(vpn_status,
 creds_btn.place(relx = 0.35, rely = 0.8)
 disconnect_btn._text_color_disabled
 
-# ------------------------------------------------------------------
+ # ------------------------------------------------------------------
 creds = customtkinter.CTk() 
 creds.geometry("300x300")
 creds.title("VPN")
@@ -66,11 +74,11 @@ acc_input = customtkinter.CTkEntry(creds, placeholder_text = "account")
 acc_input.place(in_ = creds, relx = 0.25, rely = 0.3)
 
 pwd_input = customtkinter.CTkEntry(creds, placeholder_text = "password")
-pwd_input.place(in_=creds, relx=0.25, rely=0.4)
+pwd_input.place(in_= creds, relx = 0.25, rely = 0.4)
 
 
 button = customtkinter.CTkButton(master = creds, 
-                                 text = "Connect", 
+                                 text = "Save", 
                                  command = save_creds)
 
 button.place(relx=0.25, rely=0.6)
