@@ -24,8 +24,9 @@ vpn_status.title("VPN")
 vpn_status.resizable(False,False)
 
 disconnect_btn = customtkinter.CTkButton(vpn_status,text = "Disconnect",command = button_disconnect_vpn)
-disconnect_btn.place(relx = 0.5, rely = 0.5)
+disconnect_btn.place(relx = 0.7, rely = 0.8)
 creds_btn = customtkinter.CTkButton( vpn_status, text = "Settings", command = check_creds )
+creds_btn.place(relx = 0.4, rely = 0.8)
 
 
 # ------------------------------------------------------------------
