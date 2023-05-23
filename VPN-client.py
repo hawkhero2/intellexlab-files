@@ -1,3 +1,4 @@
+import os
 import tkinter
 from typing import Optional, Tuple, Union
 import customtkinter
@@ -6,9 +7,36 @@ customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("blue")
 
 class Main(customtkinter.CTk):
-     def __init__(self, master):
+    def check_creds():
+        creds.iconify()
+        vpn_status.withdraw()
+
+    def button_disconnect_vpn():
+        # os.system("vpnclient stop")
+        print("terminating connection...")
+
+    def button_connect_vpn():
+        # os.system("vpnclient start")
+        print("connecting vpnclient...")
+
+
+    def __init__(self, master):
         super().__init__(master)
- 
+        self.geometry("500x250")
+        self.title("VPN")
+        self.resizable(False,False)
+        
+        self.disconnect_btn = customtkinter.CTkButton(self, 
+                                                text = "Disconnect",  
+                                                command = button_disconnect_vpn)
+
+        self.disconnect_btn.place(relx = 0.65, rely = 0.8)
+        self.creds_btn = customtkinter.CTkButton(self, 
+                                            text = "Settings", 
+                                            command = check_creds)
+
+        self.creds_btn.place(relx = 0.35, rely = 0.8)
+
 
 class Settings(customtkinter.CTk):
     def __init__(self, master):
@@ -31,7 +59,12 @@ def check_creds():
     vpn_status.withdraw()
 
 def button_disconnect_vpn():
+    # os.system("vpnclient stop")
     print("terminating connection...")
+
+def button_connect_vpn():
+    # os.system("vpnclient start")
+    print("connecting vpnclient...")
 
 vpn_status = customtkinter.CTk()
 vpn_status.geometry("500x250")
@@ -50,7 +83,6 @@ creds_btn = customtkinter.CTkButton(vpn_status,
                                     command = check_creds)
 
 creds_btn.place(relx = 0.35, rely = 0.8)
-disconnect_btn._text_color_disabled
 
  # ------------------------------------------------------------------
 creds = customtkinter.CTk() 
