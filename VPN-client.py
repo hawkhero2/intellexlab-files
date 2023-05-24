@@ -43,7 +43,10 @@ customtkinter.set_default_color_theme("blue")
 # class Settings(customtkinter.CTk):
 #     def __init__(self, master):
 #         super().__init__(master)
-
+#         self.acc_input = customtkinter.CTkEntry(self, placeholder_text="account",str= tkinter.DOTBOX)
+        
+#         def save_creds():
+#             credentials.__setitem__("acc", acc_input)
 
 def get_conn_status():
     status : bool = True
@@ -72,7 +75,6 @@ vpn_status = customtkinter.CTk()
 vpn_status.geometry("500x250")
 vpn_status.title("VPN")
 vpn_status.resizable(False,False)
-
 
 
 disconnect_btn = customtkinter.CTkButton(vpn_status, 
@@ -110,7 +112,9 @@ def save_creds():
 acc_input = customtkinter.CTkEntry(creds, placeholder_text = "account")
 acc_input.place(in_ = creds, relx = 0.25, rely = 0.3)
 
-pwd_input = customtkinter.CTkEntry(creds, placeholder_text = "password")
+pwd_input = customtkinter.CTkEntry(creds, 
+                                   placeholder_text = "password", 
+                                   str = tkinter.DOTBOX)
 pwd_input.place(in_= creds, relx = 0.25, rely = 0.4)
 
 
