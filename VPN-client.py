@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import os
+import subprocess
 import tkinter
 from typing import Optional, Tuple, Union
 import customtkinter
@@ -64,7 +65,7 @@ def check_creds():
     vpn_status.withdraw()
 
 def button_disconnect_vpn():
-    os.system("vpnclient stop")
+    os.system("vpnclient stop >/dev/null 2>&1")
     print("terminating connection...")
 
 def button_connect_vpn():
@@ -113,8 +114,7 @@ acc_input = customtkinter.CTkEntry(creds, placeholder_text = "account")
 acc_input.place(in_ = creds, relx = 0.25, rely = 0.3)
 
 pwd_input = customtkinter.CTkEntry(creds, 
-                                   placeholder_text = "password", 
-                                   str = tkinter.DOTBOX)
+                                   placeholder_text = "password")
 pwd_input.place(in_= creds, relx = 0.25, rely = 0.4)
 
 
